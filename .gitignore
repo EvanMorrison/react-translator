@@ -1,0 +1,12 @@
+node_modules
+
+.DS_Store
+
+.vscode
+tsconfig.json
+
+public
+build
+dist
+cjs
+umd
