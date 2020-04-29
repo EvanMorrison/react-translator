@@ -1,5 +1,5 @@
 import React from 'react';
-import { isNil, isString, isNumber } from 'lodash';
+import { get, isNil, isString, isNumber } from 'lodash';
 
 const ReactTranslator = {
   defaultLanguageKey: null,
@@ -10,26 +10,11 @@ const ReactTranslator = {
   languages: {},
 
   changeLanguage(language) {
-    if (this.languages.hasOwnProperty(language)) {
+    if (!isNil(this.languages[language])) {
       this.language = language;
     } else {
       this.language = this.defaultLanguageKey;
     }
-  },
-
-  findTranslation(translation, id) {
-    const idPieces = id.split('.');
-
-    for (let i = 0; i < idPieces.length; i++) {
-      const piece = idPieces[i];
-      if (isNil(translation[piece])) {
-        return null;
-      } else {
-        translation = translation[piece];
-      }
-    }
-
-    return translation;
   },
 
   registerDefaultLanguage(key, library) {
@@ -42,25 +27,17 @@ const ReactTranslator = {
   },
 
   registerLanguage(key, library) {
-    const languages = this.languages;
-    languages[key] = library;
-    this.languages = languages;
+    this.languages[key] = library;
+    if (isNil(this.language)) {
+      this.language = key;
+    }
   },
 
-  translate(id, values = {}) {
-    const library = this.getLibrary();
-    if (typeof library === 'undefined') {
-      return id;
-    }
+  translate(path, values = {}) {
+    const translation = get(this.languages[this.language], path, get(this.defaultLanguageLibrary, path, null));
 
-    let translation = this.findTranslation(library, id);
-
-    // defaults
-    if (isNil(translation) && this.language !== this.defaultLanguageKey) {
-      translation = this.findTranslation(this.getLibrary(this.defaultLanguageKey), id);
-    }
     if (isNil(translation)) {
-      translation = id;
+      return path;
     }
 
     function interpolate(part, values) {
