@@ -1,9 +1,14 @@
 {
-  "name": "react-translator",
+  "name": "simple-translator-react",
   "version": "1.0.0",
   "description": "simple translator util",
   "main": "index.js",
   "module": "lib/index.js",
+  "files": [
+    "cjs",
+    "lib",
+    "umd"
+  ],
   "scripts": {
     "prebuild": "rimraf cjs umd lib",
     "build": "npm-run-all --parallel build:*",
@@ -18,7 +23,9 @@
   },
   "keywords": [
     "translator",
-    "translate"
+    "translate",
+    "simple-translator",
+    "react"
   ],
   "author": "Evan Morrison <evanrmorrison@gmail.com>",
   "license": "MIT",
