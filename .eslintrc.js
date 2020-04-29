@@ -10,6 +10,7 @@ module.exports = {
   plugins: ['babel', 'import', 'node', 'promise', 'standard'],
   rules: {
     'comma-dangle': ['error', 'only-multiline'],
+    'no-prototype-builtins': 0,
     'no-template-curly-in-string': 'off',
     'no-unused-expressions': 0,
     'babel/no-unused-expressions': ['error', { allowTernary: true }],
