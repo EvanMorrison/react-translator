@@ -5,6 +5,7 @@ README.md
 dist
 cjs
 umd
+lib
 dump.rdb
 babel.config.js
 node_modules

@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "simple translator util",
   "main": "index.js",
+  "module": "lib/index.js",
   "scripts": {
+    "prebuild": "rimraf cjs umd lib",
+    "build": "npm-run-all --parallel build:*",
+    "build:esModules": "cross-env BABEL_ENV=esModules babel src --out-dir lib",
+    "build:dev": "webpack --output-filename index.js --mode development",
+    "build:prod": "cross-env NODE_ENV=production webpack --output-filename index.min.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -48,6 +54,7 @@
     "core-js": "^3.6.5",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "simple-translator": "^0.2.2"
   }
 }

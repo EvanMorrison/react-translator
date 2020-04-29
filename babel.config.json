@@ -14,5 +14,25 @@
       }
     ]
   ],
+  "env": {
+    "esModules": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "browsers": [
+                "last 2 years"
+              ]
+            },
+            "useBuiltIns": "entry",
+            "bugfixes": true,
+            "corejs": 3,
+            "modules": false
+          }
+        ]
+      ] 
+    }
+  },
   "comments": false
 }
