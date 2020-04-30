@@ -38,7 +38,11 @@ const baseConfig = {
     ],
   },
   externals: {
-    lodash: 'lodash',
+    lodash: {
+      commonjs: 'lodash',
+      commonjs2: 'lodash',
+      root: '_',
+    },
     react: 'react',
     'react-dom': 'react-dom',
   },
