@@ -8,7 +8,8 @@
   "files": [
     "cjs",
     "lib",
-    "umd"
+    "umd",
+    "index.d.ts"
   ],
   "scripts": {
     "prebuild": "rimraf cjs umd lib",
