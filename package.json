@@ -1,6 +1,6 @@
 {
   "name": "simple-translator-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple translator util",
   "main": "index.js",
   "module": "lib/index.js",
